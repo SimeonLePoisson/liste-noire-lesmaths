@@ -2,7 +2,7 @@
 // @name        Liste Noire
 // @namespace   https://github.com/SimeonLePoisson/liste-noire-lesmaths
 // @description Ajoute un bouton afficher/masquer aux messages
-// @author      Siméon
+// @author      Siméon, Steven Neutral
 // @include     http://www.les-mathematiques.net/phorum/read.php?*
 // @version     1
 // @grant       none
@@ -12,7 +12,7 @@
 // Liste des utilisateurs dont les messages seront masqués par défaut
 var blacklist = ['christophe c', 'Fin de partie', 'FDP-HLM', 'FDP_HLM'];
 
-var unhide_txt = '[masquer ce message]';
+var unhide_txt = 'masquer';
 
 var toggle_style = {
 	'margin-left': '0.5em',
@@ -25,10 +25,9 @@ function add_toggle ($msg) {
 	var $author = $('div.message-author', $msg);
 	var author_text = $author.text().trim();
 
-	var $toggle = $('<span/>', {
+	var $toggle = $('<button/>', {
 			html: unhide_txt,
 			click: hide,
-			css: toggle_style
 	});
 	$toggle.appendTo($author);
 	
@@ -36,7 +35,7 @@ function add_toggle ($msg) {
 	
 	function hide () {
 		var text_length = String($body.text().trim().length);
-		var text = '[afficher ' + text_length + ' caractères]';
+		var text = 'afficher ' + text_length + ' caractères';
 		$body.css('display','none');
 		$toggle.html(text);
 		$toggle.click(unhide);
