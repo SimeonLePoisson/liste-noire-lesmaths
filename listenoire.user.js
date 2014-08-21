@@ -54,15 +54,15 @@ function add_toggle ($msg) {
 }
 
 function correct_accents ($msg) {
-	content = $msg.html();
+	var content = $msg.html();
 	content = content.replace(/&amp;/g,'&');
 	$msg.html(content);
 }
 
 $(document).ready(function () {
-	$('.message-body').css({'margin':'0', 'border':'0'});
-	$('.generic').css({'margin':'0', 'border':'0'});
-	$('.message').css({'margin':'16px', 'border': '1px solid #c0cdc0'});
-	$('div.message-body').each(function (index) {correct_accents($(this))});
-	$('div.message').each(function (index) {add_toggle($(this))});
+    $('.message-body').css({'margin':'0', 'border':'0'});
+    $('.generic').css({'margin':'0', 'border':'0'});
+    $('.message').css({'margin':'16px', 'border': '1px solid #c0cdc0'});
+    $('div.message-body').each(function (index) {correct_accents($(this))});
+    $('div.message').each(function (index) {add_toggle($(this))});
 });
