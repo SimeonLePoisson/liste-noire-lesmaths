@@ -9,8 +9,16 @@
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js
 // ==/UserScript==
 
-// Liste des utilisateurs dont les messages seront masqués par défaut
-var blacklist = ['christophe c', 'Fin de partie', 'FDP-HLM', 'FDP_HLM'];
+
+// La variable blacklist contient la liste des utilisateurs dont les
+// messages seront masqués par défaut.
+
+var blacklist = [];
+
+// Autre exemple :
+// ---------------
+//
+// var blacklist = ['christophe c', 'Fin de partie', 'FDP-HLM', 'FDP_HLM'];
 
 var unhide_txt = '[masquer ce message]';
 
@@ -21,6 +29,7 @@ var toggle_style = {
 	'visible' : 'hidden'
 }
 
+// Ajout du "bouton"
 function add_toggle ($msg) {
 	var $author = $('div.message-author', $msg);
 	var author_text = $author.text().trim();
@@ -53,6 +62,7 @@ function add_toggle ($msg) {
 	}
 }
 
+// Correction de l'échappements des caractères '&'
 function correct_accents ($msg) {
 	var content = $msg.html();
 	content = content.replace(/&amp;/g,'&');
